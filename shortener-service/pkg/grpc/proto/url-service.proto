@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package db;
+option go_package = "../urlpb";
+
+
+message NewShortURLRequest {
+  string longURL = 1;
+}
+message NewShortURLResponse {
+  string shortURL = 1;
+}
+
+message GetLongURLRequest {
+  string shortURL = 1;
+}
+
+message GetLongURLResponse {
+  string longURL = 1;
+}
+
+
+
+service URLService {
+  rpc GenerateShortURL(NewShortURLRequest) returns (NewShortURLResponse);
+  rpc GetLongURL(GetLongURLRequest) returns (GetLongURLResponse);
+}

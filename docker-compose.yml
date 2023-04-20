@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  auth-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'users'
+      MYSQL_USER: 'test'
+      MYSQL_PASSWORD: 'test'
+      MYSQL_ROOT_PASSWORD: 'test'
+    ports:
+      - '3306:3306'
+  url-db:
+    image: mongo
+    ports:
+      - '27017:27017'
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
